@@ -1,0 +1,102 @@
+Trigger 1:
+
+--TRIGGER TO KEEP RECORD OF CHANGES DONE TO INTERNSHIP TABLE
+
+CREATE TABLE internship_record(
+id int NOT NULL AUTO_INCREMENT,
+InternshipID INT NOT NULL,
+CompanyID INT NOT NULL,
+Action varchar(50) DEFAULT NULL,
+changeon datetime DEFAULT NULL,
+PRIMARY KEY(id)
+);
+
+DELIMITER //
+CREATE Trigger before_insert_internship
+BEFORE INSERT ON internship
+FOR EACH ROW
+BEGIN
+ INSERT INTO internship_record
+ SET InternshipID=NEW.InternshipID,
+     CompanyID= NEW.CompanyID,
+     Action='INSERT',
+     changeon =  NOW();
+END //
+
+CREATE Trigger before_delete_internship
+BEFORE DELETE ON internship
+FOR EACH ROW
+BEGIN
+ INSERT INTO internship_record
+ SET InternshipID=OLD.InternshipID,
+     CompanyID= OLD.CompanyID,
+     Action='DELETE',
+     changeon = NOW();
+END //
+
+CREATE Trigger before_update_internship
+BEFORE UPDATE ON internship
+FOR EACH ROW
+BEGIN
+ INSERT INTO internship_record
+ SET InternshipID=OLD.InternshipID,
+     CompanyID= OLD.CompanyID,
+     Action='UPDATE',
+     changeon =  NOW();
+END //
+
+DELIMITER ;
+
+
+
+Trigger 2:
+
+
+---------Trigger to automatically update work hours of a student when Isplaced=true for some internship
+DELIMITER $$
+
+CREATE TRIGGER work_hours_updation
+	BEFORE UPDATE ON INTEREST
+	FOR EACH ROW
+ BEGIN
+	DECLARE iwhours INT;
+	DECLARE swhours FLOAT(8,2);
+
+	IF New.ISPlaced THEN
+	SELECT Work_hour INTO iwhours
+	FROM INTERNSHIP
+	WHERE InternshipID=NEW.InternshipID;
+	
+	SELECT Work_Hours INTO swhours
+	FROM STUDENT
+	WHERE StudentID=NEW.StudentID;
+	
+	
+	UPDATE STUDENT
+	SET WORK_HOURS= iwhours+swhours
+	WHERE StudentID=NEW.StudentID;
+
+	ELSE
+
+	SELECT Work_hour INTO iwhours
+	FROM INTERNSHIP
+	WHERE InternshipID=OLD.InternshipID;
+	
+	SELECT Work_Hours INTO swhours
+	FROM STUDENT
+	WHERE StudentID=OLD.StudentID;
+
+	UPDATE STUDENT
+	SET WORK_HOURS= swhours-iwhours
+	WHERE StudentID=OLD.StudentID;
+
+	END IF;
+END$$
+	
+
+
+DELIMITER ;
+
+
+
+	

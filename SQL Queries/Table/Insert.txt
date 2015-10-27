@@ -1,0 +1,495 @@
+5. Insert Sample Data-
+
+insert into Person
+values
+(1, 'ADMIN', 'Pamela', 'Thompson', 'p.thompson@uncc.edu', '123-345-6789', 'University Blvd', 'Charlotte', 28262);
+
+
+insert into Person
+values
+(2, 'STUDENT', 'Aditya', 'Bhatkar', 'aditya.bhatkar@uncc.edu', '123-543-6789', 'N Tryon Strt', 'Charlotte', 28262);
+
+
+insert into Person
+values
+(3, 'SUPERVISOR', 'Larry', 'Page', 'larry.page@gmail.com', '987-543-6789', '1600 Amphitheatre Parkway', 'Mountain View', 94035);
+
+insert into Person
+values
+(4, 'SUPERVISOR', 'Jerry', 'Yang', 'jerry.yang@yahoo.com', '567-543-6789', '701 First Avenue', 'Sunnyvale', 94089);
+
+
+insert into Student
+values(2, '2016-12-15', '2014-1-6', 'Spring', 3.5, 'Computer Science', 'F1', '1990-02-18', 0);
+
+
+insert into department
+values
+(1, 'ITCS');
+
+insert into administrator
+values
+(1, 1, 'Admin');
+
+insert into business
+values
+(1, 'Google', 'g.careers@gmail.com', '456-789-1234', '1600 Amphitheatre Parkway', 'Mountain View', 94035, 1);
+
+
+insert into business
+values
+(2, 'Yahoo', 'y.careers@yahoo.com', '456-098-1234', '701 First Avenue', 'Sunnyvale', 94089, 1);
+
+
+insert into supervisor
+values
+(3, 1);
+
+
+insert into supervisor
+values
+(4, 2);
+
+
+insert into skill
+values
+(1, 'Java', 'Core java');
+
+
+insert into skill
+values
+(2, 'PHP', 'Web Development');
+
+insert into student_skills
+values
+(2, 1, 3);
+
+
+insert into student_skills
+values
+(2, 2, 1);
+
+insert into internship
+values
+(1, 'Jr. Software Developer', 20, 'Profit', 12, '2015-05-12', '2015-08-12', 'Summer', 5, FALSE, FALSE, 1, 1, 3);
+
+
+insert into internship
+values
+(2, 'Web Developer', 20, 'Profit', 16, '2015-05-10', '2015-07-12', 'Summer', 7, FALSE, FALSE, 2, 1, 4);
+
+
+insert into interest
+values
+(2, 1, FALSE);
+
+
+insert into interest
+values
+(2, 2, FALSE);
+
+insert into login
+values
+(2, '800887086', 'Simple Pass');
+
+insert into login
+values
+(1, '800777089', 'Difficult Pass');
+
+insert into person
+values(10,'ADMIN','Alex','Matthew','alex@uncc.edu','158-658-7896','704 University Blvd','Charlotte',28262);
+
+insert into person
+values(11,'STUDENT','charu','Gaur','charugaur@uncc.edu','586-569-3698','Grove side Ln','Charlotte',28262);
+
+insert into person
+values(12,'SUPERVISOR','Kailey','Thomas','kaileyth@ibm.com','168-856-3697','647 Ashley Court ','Charlotte',28262);
+
+insert into person
+values(13,'SUPERVISOR','Rachael','Rai','rr@allstate.com','196-358-3654','5436 River Road ','Charlotte',28262);
+
+insert into Student
+values(11, '2016-05-15', '2014-1-6', 'Spring', 3.5, 'Computer Science', 'F1', '1992-09-05', 0);
+
+insert into department
+values
+(5, 'ITIS');
+
+insert into administrator
+values
+(10, 5, 'Admin');
+
+insert into business
+values
+(20, 'IBM', 'i.careers@ibm.com', '432-895-4563', '5714 Arch Street ', 'Charlotte', 28262, 10);
+
+
+insert into business
+values
+(21, 'AllState', 'a.careers@allstate.com', '586-963-1256', '402 Linden Street ', 'Charlotte', 28262, 10);
+
+
+insert into supervisor
+values
+(12, 20);
+
+
+insert into supervisor
+values
+(13, 21);
+
+insert into skill
+values
+(3, 'ASP', 'Web Development');
+
+
+insert into skill
+values
+(4, 'R', 'Data Analysis');
+
+insert into student_skills
+values
+(11, 3, 1);
+
+
+insert into student_skills
+values
+(11, 4, 1);
+
+insert into internship
+values
+(7, 'Data Analyst', 25, 'Profit', 15, '2015-05-12', '2015-08-12', 'Summer', 4, FALSE, FALSE, 20, 10, 12);
+
+
+insert into internship
+values
+(8, 'Web Developer', 20, 'Non-Profit', 18, '2015-05-10', '2015-07-12', 'Summer', 5, FALSE, FALSE, 21, 10, 13);
+
+
+insert into interest
+values
+(11, 7, FALSE);
+
+
+insert into interest
+values
+(11, 8, FALSE);
+
+insert into login
+values
+(10, '800889586', 'qwerty');
+
+insert into login
+values
+(11, '800666789', 'abcd');
+
+
+insert into Person
+values
+(5,'STUDENT', 'Guoqing', 'Yu', 'gyu1@uncc.edu', '704-307-3429', 'Grove Crest Ln', 
+'Charlotte', 28262);
+insert into Person
+values
+(6,'SUPERVISOR', 'Yong', 'Ge', 'gyong@uncc.edu', '704-325-3725', 'N Tryon Strt',
+'Charlotte', 28262);
+
+insert into Student
+values(5, '2016-12-15', '2014-1-6', 'Spring', 3.5, 'Computer Science', 'F1', 
+'1986-10-05', 0);
+
+insert into business
+values
+(3, 'Linkedin', 'hr@linkedin.com', '650-687-3600', '2029 Stierlin Ct', 'Mountain View', 94043, 1);
+
+
+insert into supervisor
+values
+(6, 3);
+
+insert into internship
+values
+(3, 'Android app dev', 20, 'Profit', 35, '2015-08-20', '2015-12-20', 'Fall', 5, FALSE, FALSE, 3, 1, 6);
+
+
+insert into skill
+values
+(5, 'SQL', 'Database');
+
+insert into skill
+values
+(6, 'Android app dev', 'Android app development');
+
+insert into student_skills
+values
+(5, 1, 1);
+
+insert into student_skills
+values
+(5, 2, 1);
+
+insert into student_skills
+values
+(5, 3, 1);
+
+insert into student_skills
+values
+(5, 4, 1);
+
+insert into student_skills
+values
+(5, 5, 1);
+
+insert into interest 
+values
+(5, 1, FALSE);
+
+insert into interest 
+values
+(5, 2, FALSE);
+
+insert into login
+values
+(5, '800876564', 'passpass');
+
+
+insert into Person
+values
+(14, 'ADMIN', 'Ken', 'Chen', 'ken.chen@uncc.edu', '763-789-6789', 'University Blvd', 'Charlotte', 28262);
+
+
+insert into Person
+values
+(15, 'STUDENT', 'Sharan', 'Reddy', 'sharan.reddy@uncc.edu', '923-768-6789', 'N Tryon Strt', 'Charlotte', 28262);
+
+
+insert into Person
+values
+(16, 'SUPERVISOR', 'Mike', 'kale', 'larry.page@gmail.com', '987-543-6789', '1600 Amphitheatre Parkway', 'Mountain View', 94035);
+
+insert into Person
+values
+(17, 'SUPERVISOR', 'Chin', 'Yang', 'Chin.yang@yahoo.com', '567-543-6789', '701 First Avenue', 'Sunnyvale', 94089);
+
+
+insert into Student
+values(15, '2017-12-15', '2015-1-6', 'Spring','0.00', 'EE', 'F1', '1991-02-18', 0);
+
+
+insert into department
+values
+(8, 'MSEE');
+
+insert into administrator
+values
+(14, 8, 'Admin');
+
+insert into business
+values
+(4, 'Facebook', 'f.careers@facebook.com', '456-789-1234', '1600 Amphitheatre Parkway', 'Cali', 94035, 1);
+
+
+insert into business
+values
+(5, 'BOFA', 'b.careers@bofa.com', '456-098-1234', '701 First Avenue', 'Sunnyvale', 94089, 1);
+
+
+insert into supervisor
+values
+(17, 4);
+
+
+insert into supervisor
+values
+(16, 5);
+
+
+insert into skill
+values
+(7, 'Hadoop', 'Bigdata');
+
+
+insert into skill
+values
+(8, 'ios', 'MAD');
+
+insert into student_skills
+values
+(15, 7, 2.0);
+
+
+insert into student_skills
+values
+(15, 8, 3.0);
+
+insert into internship
+values
+(9, 'Jr. Software Developer', 20, 'Profit', 12, '2015-05-12', '2015-08-12', 'Summer', 5, FALSE, FALSE, 4, 1, 16);
+
+insert into internship
+values
+(10, 'Jr. Software Developer', 20, 'Profit', 12, '2015-05-12', '2015-08-12', 'Summer', 5, FALSE, FALSE, 4, 1, 16);
+
+
+
+insert into interest
+values
+(15, 9, true);
+
+
+insert into interest
+values
+(15, 10, true);
+
+insert into login
+values
+(6, '800888186', 'password');
+
+
+
+
+insert into person (PersonID,Position,First_Name,Last_Name,Email,Phone_Number,Street,City,ZIP)
+
+values ("123","Student","Dave","Watmore","Dave.Watmore@gmail.com","9803499807","204 Barton Creek
+
+Drive","Charlotte","28262");
+
+insert into person (PersonID,Position,First_Name,Last_Name,Email,Phone_Number,Street,City,ZIP)
+
+values ("124","Student","Tarun","Ravva","Tarun.ravva@gmail.com","9803499805","205 Barton Creek
+
+Drive","Charlotte","28262");
+
+insert into person (PersonID,Position,First_Name,Last_Name,Email,Phone_Number,Street,City,ZIP)
+
+values ("125","Admiministrator","David","Wade","Dav.Wade@gmail.com","9803499852","208 Barton Creek
+
+Drive","Charlotte","28262");
+
+insert into person (PersonID,Position,First_Name,Last_Name,Email,Phone_Number,Street,City,ZIP)
+
+values ("126","Admiministrator","kane","williamson","kane.will@gmail.com","9853499805","650 hurricane
+
+street","Charlotte","24262");
+
+insert into person (PersonID,Position,First_Name,Last_Name,Email,Phone_Number,Street,City,ZIP)
+
+values ("127","supervisor","jinks","rahane","jinks@gmail.com","9803499302","262 Barton Creek Drive","Charlotte","28262");
+
+insert into person (PersonID,Position,First_Name,Last_Name,Email,Phone_Number,Street,City,ZIP)
+
+values ("128","supervisor","kumar","pathuri","kumar.pathuri@gmail.com","6213499805","205 civilian Drive","Charlotte","22262");
+
+insert into login (PersonID, UserID, Password) values ("123","dwatmore","test1234");
+
+insert into login (PersonID, UserID, Password) values ("124","travva","test1234");
+
+insert into login (PersonID, UserID, Password) values ("125","dwade","test1234");
+
+insert into login (PersonID, UserID, Password) values ("126","kwill","test1234");
+
+insert into login (PersonID, UserID, Password) values ("127","jrahan","test1234");
+
+insert into login (PersonID, UserID, Password) values ("128","kpathuri","test1234");
+
+insert into student (StudentID, Graduate_Date, Start_Date, Semester, GPA, Major, Residence_Status, Date_Of_Birth,
+
+Work_Hours) values
+
+("123","20151231","20150420","3","3.92","CSE","Local","19910403","25");
+
+insert into student (StudentID, Graduate_Date, Start_Date, Semester, GPA, Major, Residence_Status, Date_Of_Birth,
+
+Work_Hours) values
+
+("124","20151231","20150420","2","4.00","EE","Local","19910502","20");
+
+insert into skill(SkillID, Name, Description) values ("501","Front end Developer","Programming interaction with JavaScript");
+
+insert into skill(SkillID, Name, Description) values ("502","Tester","Automation Testing using QTP");
+
+insert into STUDENT_SKILLS(StudentID,SkillID,Years_Of_Experience) values ("123","501","2");
+
+insert into STUDENT_SKILLS(StudentID,SkillID,Years_Of_Experience) values ("123","502","1");
+
+insert into STUDENT_SKILLS(StudentID,SkillID,Years_Of_Experience) values ("124","502","1");
+
+insert into DEPARTMENT(DepartmentID,Name) values ("801","CSE");
+
+insert into DEPARTMENT(DepartmentID,Name) values ("802","EE");
+
+insert into ADMINISTRATOR (AdministratorID,DepartmentID,Title) values ("125","801","BOFA");
+
+insert into ADMINISTRATOR (AdministratorID,DepartmentID,Title) values ("126","801","WF");
+
+insert into BUSINESS (CompanyID,Name,Email,Phone_Number,Street,City,ZIP,AdministratorID)
+
+values ("1001","BOFA","careers@bofa.com","9852456985","209 driwood court","charlotte","28265","125");
+
+insert into BUSINESS (CompanyID,Name,Email,Phone_Number,Street,City,ZIP,AdministratorID)
+
+values ("1002","Wells Forgo","careers@wf.com","9887456985","210 lake view drive","charlotte","28264","126");
+
+insert into supervisor (SupervisorID,CompanyID) values ("127","1001");
+
+insert into supervisor (SupervisorID,CompanyID) values ("128","1002");
+
+insert into
+
+internship(InternshipID,Title,Work_Hour,Business_Type,Pay,Start_Date,End_Date,Semester,Number_Of_Position,Student_Eval,
+
+Supervisor_Eval,CompanyID,AdministratorID,SupervisorID) values
+
+("2001","tester","20","telecom","25","20150510","20150725","3","6","1","1","1001","125","127");
+
+insert into
+
+internship(InternshipID,Title,Work_Hour,Business_Type,Pay,Start_Date,End_Date,Semester,Number_Of_Position,Student_Eval,
+
+Supervisor_Eval,CompanyID,AdministratorID,SupervisorID) values ("2002","web
+
+developer","20","insurance","25","20150510","20150725","3","6","1","1","1001","125","127");
+
+insert into interest (StudentID,InternshipID,IsPlaced) values ("123","2001","1");
+
+insert into interest (StudentID,InternshipID,IsPlaced) values ("124","2002","1");
+
+
+insert into person (PersonID,Position,First_Name,Last_Name,Email,Phone_Number,Street,City,ZIP)
+values ("129","Student","Vignesh","Karunanithi","vignesh.k@gmail.com","6213499898","219 civilian Drive","Charlotte","22262");
+insert into `person` (`PersonID`, `Position`, `First_Name`, `Last_Name`, `Email`, `Phone_Number`, `Street`, `City`, `ZIP`) values(130, 'Student', 'Shawn', 'Michaels', 'shawn.m@gmai.com', '9803167890', '222 Barton Creek Dri...', 'Charlotte', 22262);
+insert into `person` (`PersonID`, `Position`, `First_Name`, `Last_Name`, `Email`, `Phone_Number`, `Street`, `City`, `ZIP`) values(131, 'Student', 'Tarun', 'Raja', 'tarun.raja@gmail.com', '9803165678', '219 civilian Drive', 'Charlotte', 28262);
+
+insert into login (PersonID, UserID, Password) values ("129","vigneshk","test1234");
+insert into login (PersonID, UserID, Password) values ("130","shawnm","test1234");
+insert into login (PersonID, UserID, Password) values ("131","tarunraja","test1234");
+
+insert into student (StudentID, Graduate_Date, Start_Date, Semester, GPA, Major, Residence_Status, Date_Of_Birth, Work_Hours) values
+("129","20151231","20150106","1","4.00","CSE","Local","19910502","20");
+
+insert into student (StudentID, Graduate_Date, Start_Date, Semester, GPA, Major, Residence_Status, Date_Of_Birth, Work_Hours) values
+("130","20151231","20150420","2","4.00","EE","Local","19910502","20");
+
+insert into student (StudentID, Graduate_Date, Start_Date, Semester, GPA, Major, Residence_Status, Date_Of_Birth, Work_Hours) values
+("131","20151231","20140805","2","4.00","CSE","Local","19910502","20");
+
+insert into skill(SkillID, Name, Description) values ("503","DBA","DataBase Administrator");
+insert into skill(SkillID, Name, Description) values ("504","BA","Business Analyst");
+
+insert into STUDENT_SKILLS(StudentID,SkillID,Years_Of_Experience) values ("129","501","1");
+insert into STUDENT_SKILLS(StudentID,SkillID,Years_Of_Experience) values ("129","504","1");
+insert into STUDENT_SKILLS(StudentID,SkillID,Years_Of_Experience) values ("130","502","1");
+insert into STUDENT_SKILLS(StudentID,SkillID,Years_Of_Experience) values ("131","503","2");
+insert into STUDENT_SKILLS(StudentID,SkillID,Years_Of_Experience) values ("131","504","1");
+
+insert into DEPARTMENT(DepartmentID,Name) values ("803","MECH");
+
+insert into BUSINESS (CompanyID,Name,Email,Phone_Number,Street,City,ZIP,AdministratorID)
+values ("1003","Microsoft","careers@ms.com","9887456185","211 lake view drive","charlotte","28264","126");
+
+
+
+insert into internship(InternshipID,Title,Work_Hour,Business_Type,Pay,Start_Date,End_Date,Semester,Number_Of_Position,Student_Eval,
+Supervisor_Eval,CompanyID,AdministratorID,SupervisorID) values ("2003","business analyst","20","banking","25","20150510","20150725","3","6","1","1","1001","125","127");
+
+insert into interest (StudentID,InternshipID,IsPlaced) values ("129","2003","0");
+insert into interest (StudentID,InternshipID,IsPlaced) values ("131","2003","1");

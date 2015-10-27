@@ -1,0 +1,191 @@
+
+Stored Procedure 1:
+---procedure to add supervisor in student table
+DELIMITER //
+
+Create procedure addstudent(
+IN fname VARCHAR(20),
+IN lname VARCHAR(20),
+IN pno VARCHAR(20),
+IN street VARCHAR(50),
+IN city VARCHAR(20),
+IN zip INT,
+IN gdate DATE,
+IN sdate DATE,
+IN sem VARCHAR(20),
+IN gpa FLOAT(8,6),
+IN major VARCHAR(20),
+IN rstatus VARCHAR(20),
+IN dob DATE,
+IN whours FLOAT(8,2),
+IN uid VARCHAR(20),
+IN pwd VARCHAR(20),
+OUT sid INT
+)
+
+BEGIN
+DECLARE maxpid INT;
+
+Insert Into Person(Position,First_name,Last_name,Phone_Number,Street,City,Zip)
+Values('STUDENT',fname,lname,pno,street,city,zip);
+
+Select max(PersonID) INTO maxpid
+From Person;
+
+Insert Into student(StudentID, Graduate_Date, start_date, semester, GPA,  Major, Residence_Status, Date_Of_Birth, Work_Hours)
+Values(maxpid,gdate,sdate,sem,gpa,major,rstatus,dob,whours);
+
+insert into login (userID, personID, password)
+values(uid,maxpid,pwd);
+
+select maxpid INTO sid;
+END//
+
+DELIMITER ;
+
+
+
+Stored Procedure 2:
+----Call addstudent('Robin','James','1258968695','8962 Kittansett drive','Charlotte',28262,'2016-05-15','2014-1-6','Summer',3.0,'Computer Science', 'F1', '1992-09-05', 0,'800898789','passwr',@sid);
+---select @sid;
+
+
+
+
+
+
+
+---procedure to add supervisor in supervisor table
+DELIMITER //
+
+Create procedure addsupervisor(
+IN fname VARCHAR(20),
+IN lname VARCHAR(20),
+IN email VARCHAR(50),
+IN pno VARCHAR(20),
+IN street VARCHAR(50),
+IN city VARCHAR(20),
+IN zip INT,
+IN cid INT)
+
+BEGIN
+DECLARE maxpid INT;
+
+Insert Into Person(Position,First_name,Last_name,Email,Phone_Number,Street,City,Zip)
+Values('SUPERVISOR',fname,lname,email,pno,street,city,zip);
+
+Select max(PersonID) INTO maxpid
+From Person;
+
+Insert Into Supervisor
+Values(maxpid,cid);
+
+END//
+
+DELIMITER ;
+
+
+
+Stored Procedure 3:
+DELIMITER //
+DROP PROCEDURE IF EXISTS ApplyInternship; //
+
+CREATE PROCEDURE ApplyInternship(
+	IN StudID INT,
+	IN InternID INT)
+
+BEGIN
+	INSERT INTO Interest(StudentID, InternshipID, IsPlaced) VALUES(StudID, InternID, 0);
+END 
+//
+DELIMITER ;
+
+
+
+
+
+Stored Procedure 4:
+
+DELIMITER //
+DROP PROCEDURE IF EXISTS DisplayApplications; 
+//
+CREATE PROCEDURE DisplayApplications(
+	IN StudID INT)
+
+BEGIN
+	SELECT i.InternshipID AS InternshipID, intern.Title AS Title, b.Name AS CompanyName, 
+   
+ CASE i.IsPlaced WHEN 1 THEN 'Placed' ELSE 'Under Review' 
+END AS Status FROM Interest i INNER JOIN Internship intern ON i.InternshipID = intern.InternshipID
+    
+INNER JOIN Business b ON intern.CompanyID = b.CompanyID WHERE i.StudentID = StudID;
+
+END 
+//
+DELIMITER ;
+
+
+Stored Procedure 5:
+DELIMITER //
+DROP PROCEDURE IF EXISTS DisplayDetails; 
+//
+CREATE PROCEDURE DisplayDetails(
+	IN InternID INT,
+    IN StudID INT)
+
+BEGIN
+	DECLARE AppliedFlag BIT;
+	DECLARE StudentWork_Hours FLOAT;
+	
+SET StudentWork_Hours = (SELECT Work_Hours FROM Student WHERE StudentID = StudID);
+
+SET AppliedFlag = (SELECT IsPlaced FROM Interest WHERE InternshipID = InternID AND StudentID = StudID);
+
+SELECT StudentWork_Hours, 
+CASE AppliedFlag WHEN 0 THEN 1 WHEN 1 THEN 1 ELSE 0 
+END AS IsApplied, i.InternshipID, i.Title, i.Work_Hour, i.Business_Type, 
+TRUNCATE(i.Pay, 2) AS Pay, i.Start_Date, i.End_Date, i.Semester, i.Number_Of_Position, 
+	
+CONCAT(p.First_Name, ' ', p.Last_Name) AS SupervisorName, p.Email, p.Phone_Number, b.Name FROM Internship i 
+INNER JOIN Business b ON i.CompanyID = b.CompanyID
+	
+INNER JOIN Person p ON i.SupervisorID = p.PersonID WHERE i.InternshipID = InternID;
+END 
+//
+DELIMITER ;
+
+Stored Procedure 6:
+
+
+DELIMITER //
+DROP PROCEDURE IF EXISTS FilterInternship; 
+//
+CREATE PROCEDURE FilterInternship(
+	IN SearchText VARCHAR(20),
+	
+IN SearchCriteria VARCHAR(20))
+BEGIN
+	SET @dynamicQuery = NULL;
+    
+IF SearchText IS NOT NULL THEN
+		
+SET @dynamicQuery = CONCAT('SELECT i.InternshipID, i.Title, b.Name 
+FROM Internship i INNER JOIN Business b ON i.CompanyID = 
+		b.CompanyID WHERE ', SearchCriteria, ' LIKE \'', SearchText, '\'');
+	
+ELSE
+		SET @dynamicQuery = CONCAT('SELECT i.InternshipID, i.Title, b.Name FROM Internship i INNER JOIN Business b ON i.CompanyID = 
+b.CompanyID');
+	
+END IF;
+    
+    
+PREPARE stmt FROM @dynamicQuery;
+    
+EXECUTE stmt;
+    
+DEALLOCATE PREPARE stmt;
+
+END 
+//
+DELIMITER ;

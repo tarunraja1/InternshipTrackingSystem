@@ -1,0 +1,113 @@
+
+1. Create Schema-
+
+This contais scripts for creating tables. 
+The Databse name is 'internship'.
+
+use internship;
+
+CREATE TABLE PERSON(
+	PersonID INT NOT NULL AUTO_INCREMENT,
+    Position VARCHAR(20),
+    First_Name VARCHAR(20),
+    Last_Name VARCHAR(20),
+    Email VARCHAR(50),
+    Phone_Number VARCHAR(20),
+    Street VARCHAR(50),
+    City VARCHAR(20),
+    ZIP INT,
+    CONSTRAINT pk_PersonID PRIMARY KEY (PersonID));
+    
+CREATE TABLE LOGIN(
+	PersonID INT NOT NULL,
+    UserID VARCHAR(20),
+    Password VARCHAR(20),
+    CONSTRAINT pk_PersonID PRIMARY KEY(PersonID),
+    CONSTRAINT fk_Person_PersonID_Login_PersonID FOREIGN KEY (PersonID) REFERENCES Person(PersonID));
+    
+CREATE TABLE STUDENT(
+	StudentID INT NOT NULL,
+    Graduate_Date DATE,
+	Start_Date DATE,
+    Semester VARCHAR(20),
+    GPA FLOAT(8, 6),
+    Major VARCHAR(20),
+    Residence_Status VARCHAR(20),
+    Date_Of_Birth DATE,
+    Work_Hours FLOAT(8,2),
+    CONSTRAINT pk_StudentID PRIMARY KEY(StudentID),
+    CONSTRAINT fk_Person_PersonID_Student_StudentID FOREIGN KEY (StudentID) REFERENCES Person(PersonID));
+
+CREATE TABLE SKILL(
+	SkillID INT NOT NULL AUTO_INCREMENT,
+    Name VARCHAR(20),
+	Description VARCHAR(50),
+    CONSTRAINT pk_SkillID PRIMARY KEY(SkillID));
+
+CREATE TABLE STUDENT_SKILLS(
+	StudentID INT NOT NULL,
+    SkillID INT NOT NULL,
+    Years_Of_Experience FLOAT(8,6),
+    CONSTRAINT pk_StudentID_SkillID PRIMARY KEY(StudentID, SkillID),
+    CONSTRAINT fk_Student_StudentID_StudentSkills_StudentID FOREIGN KEY(StudentID) REFERENCES Student(StudentID),
+    CONSTRAINT fk_Skill_SkillID_StudentSkills_SkillID FOREIGN KEY(SkillID) REFERENCES Skill(SkillID));
+
+CREATE TABLE DEPARTMENT(
+	DepartmentID INT NOT NULL AUTO_INCREMENT,
+    Name VARCHAR(20),
+    CONSTRAINT pk_DepartmentID PRIMARY KEY(DepartmentID));
+
+CREATE TABLE ADMINISTRATOR(
+	AdministratorID INT NOT NULL,
+	DepartmentID INT,
+    Title VARCHAR(20),
+    CONSTRAINT pk_AdministratorID PRIMARY KEY(AdministratorID),
+    CONSTRAINT fk_Person_PersonID_Administrator_AdministratorID FOREIGN KEY(AdministratorID) REFERENCES Person(PersonID),
+    CONSTRAINT fk_Department_DepartmentID_Administrator_DepartmentID FOREIGN KEY(DepartmentID) REFERENCES Department(DepartmentID));
+    
+CREATE TABLE BUSINESS(
+	CompanyID INT NOT NULL AUTO_INCREMENT,
+    Name VARCHAR(30),
+    Email VARCHAR(30),
+    Phone_Number VARCHAR(20),
+    Street VARCHAR(50),
+    City VARCHAR(20),
+    ZIP INT,
+    AdministratorID INT,
+    CONSTRAINT pk_CompanyID PRIMARY KEY(CompanyID),
+    CONSTRAINT fk_Administrator_AdministratorID_Business_AdministratorID FOREIGN KEY(AdministratorID) REFERENCES Administrator(AdministratorID));
+    
+CREATE TABLE SUPERVISOR(
+	SupervisorID INT NOT NULL,
+    CompanyID INT,
+    CONSTRAINT pk_SupervisorID PRIMARY KEY(SupervisorID),
+    CONSTRAINT fk_Person_PersonID_Supervisor_SupervisorID FOREIGN KEY(SupervisorID) REFERENCES Person(PersonID),
+    CONSTRAINT fk_Business_CompanyID_Supervisor_CompanyID FOREIGN KEY(CompanyID) REFERENCES Business(CompanyID));
+    
+CREATE TABLE INTERNSHIP(
+	InternshipID INT NOT NULL AUTO_INCREMENT,
+    Title VARCHAR(30),
+    Work_Hour INT,
+	Business_Type VARCHAR(20),
+    Pay FLOAT(12,6),
+    Start_Date DATE,
+    End_Date DATE,
+    Semester VARCHAR(20),
+    Number_Of_Position INT,
+    Student_Eval BOOLEAN,
+    Supervisor_Eval BOOLEAN,
+    CompanyID INT,
+    AdministratorID INT,
+    SupervisorID INT,
+    CONSTRAINT pk_InternshipID PRIMARY KEY(InternshipID),
+    CONSTRAINT fk_Business_CompanyID_Internship_CompanyID FOREIGN KEY(CompanyID) REFERENCES Business(CompanyID),
+    CONSTRAINT fk_Administrator_AdministratorID_Internship_AdministratorID FOREIGN KEY(AdministratorID) REFERENCES Administrator(AdministratorID),
+    CONSTRAINT fk_Supervisor_SupervisorID_Internship_SupervisorID FOREIGN KEY(SupervisorID) REFERENCES Supervisor(SupervisorID));
+    
+CREATE TABLE INTEREST(
+	StudentID INT NOT NULL,
+    InternshipID INT,
+    IsPlaced BOOLEAN,
+    CONSTRAINT pk_StudentID_InternshipID PRIMARY KEY(StudentID, InternshipID),
+    CONSTRAINT fk_Student_StudentID_Interest_StudentID FOREIGN KEY(StudentID) REFERENCES Student(StudentID),
+    CONSTRAINT fk_Internship_InternshipID_Interest_InternshipID FOREIGN KEY(InternshipID) REFERENCES Internship(InternshipID));

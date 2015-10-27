@@ -1,0 +1,20 @@
+4. Update Data-
+
+update person set First_Name = 'Dr.Pamela' where Last_Name= 'Thompson';
+
+update student set Major = 'cs' where studentID=2;
+
+
+
+Delete Sequence-
+delete from interest;
+delete from student_skills;
+delete from skill;
+delete from student;
+delete from internship;
+delete from supervisor;
+delete from business;
+delete from administrator;
+delete from department;
+delete from login;
+delete from person;

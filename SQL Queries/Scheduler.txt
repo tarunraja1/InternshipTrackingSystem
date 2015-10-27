@@ -1,0 +1,34 @@
+SET GLOBAL event_scheduler = ON;
+
+
+
+DELIMITER $$
+
+
+	CREATE EVENT clean
+        ON SCHEDULE  EVERY 1 DAY 
+        STARTS CURRENT_TIMESTAMP
+        ON COMPLETION PRESERVE
+	DO BEGIN
+		
+		-- delete internships for which start date has gone
+	
+		DELETE From Interest
+		Where InternshipID IN (Select InternshipID 
+					From internship
+					WHERE Start_date<=CURRENT_DATE);
+
+
+		DELETE From INTERNSHIP
+		where InternshipID IN(Select InternshipID 
+					From internship
+					WHERE Start_date<=CURRENT_DATE);
+ 
+		
+	    
+	END $$
+
+DELIMITER ;
+
+
+

@@ -1,0 +1,35 @@
+
+2. Indexes-
+
+CREATE INDEX admintitle
+ON administrator (title);
+
+CREATE INDEX cname
+ON business (name);
+
+CREATE INDEX dname
+ON department (name);
+
+CREATE INDEX Iplaced
+ON interest (IsPlaced);
+
+CREATE INDEX Ipay
+ON internship (Pay);
+
+CREATE INDEX Superid
+ON supervisor (SupervisorID);
+
+CREATE INDEX Skillexp
+ON student_skills (Years_Of_Experience);
+
+CREATE INDEX Smajor
+ON student (Major);
+
+CREATE INDEX Skname
+ON skill (Name);
+
+CREATE INDEX plname
+ON person (Last_Name);
+
+CREATE INDEX Luserid
+ON login (UserID);

@@ -1,0 +1,18 @@
+3. Access Data-
+
+1. A query to list all the internship opportunities offered by a particular business-
+
+select * from internship where CompanyID = "1001";
+
+2. A query to list the name and details of the supervisor associated with any particular internship so that student may contact him in case of need.
+
+select * from person where PersonID = (select supervisorid from internship where InternshipID = "2002");
+
+3. Query to list all the skils of a student
+
+select * from Skill where SkillID in (select SkillID from student_skills where StudentID = "123");
+
+4. A query so that a particular student can see all the internships he has shown interest in and its status that he is placed in it or rejected
+
+select CONCAT(First_Name, " ",Last_Name) as Student_Name, title, IsPlaced from internship i1 inner join interest i2 on i1.internshipID = i2.InternshipID 
+inner join Person p on i2.StudentID = p.PersonID where i2.StudentID = "124";
